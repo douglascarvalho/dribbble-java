@@ -1,6 +1,6 @@
 package com.douglas.carvalho.dribbblejava.domain;
 
-public class Card {
+public class Screenshot {
 	
 	private String title;
 

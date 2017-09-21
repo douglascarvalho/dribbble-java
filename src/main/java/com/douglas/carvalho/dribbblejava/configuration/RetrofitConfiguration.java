@@ -3,7 +3,7 @@ package com.douglas.carvalho.dribbblejava.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.douglas.carvalho.dribbblejava.api.APIDribbbleService;
+import com.douglas.carvalho.dribbblejava.api.APIDribbble;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -24,8 +24,8 @@ public class RetrofitConfiguration {
 	}
 
 	@Bean
-	public APIDribbbleService dribbleService(Retrofit retrofit) {
-		return retrofit.create(APIDribbbleService.class);
+	public APIDribbble dribbleService(Retrofit retrofit) {
+		return retrofit.create(APIDribbble.class);
 	}
 	
 }
