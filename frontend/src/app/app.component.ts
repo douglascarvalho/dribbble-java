@@ -14,8 +14,8 @@ export class AppComponent {
 
   constructor(private http: Http) {
     console.log('Hello fellow user');
-    this.getPopularShots();
-    this.getData;
+    this.getPopularScreenshots();
+    this.getData();
   }
 
   getData() {
@@ -23,10 +23,10 @@ export class AppComponent {
       .map((res: Response) => res.json())
   }
 
-  getPopularShots(){
+  getPopularScreenshots(){
     this.getData().subscribe(data => {
       console.log(data);
-      this.data = data
+      this.data = data;
     })
   }
 
