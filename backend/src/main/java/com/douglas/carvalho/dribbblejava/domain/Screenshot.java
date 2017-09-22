@@ -1,28 +1,59 @@
 package com.douglas.carvalho.dribbblejava.domain;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity
+@Table(name = "screenshot")
 public class Screenshot {
 	
+	@Id
+	private Long id;
+	
+	@Column
 	private String title;
-
+	
 	@SerializedName("user")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "screenshot_author_id")
 	private Author author;
 	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Image images;
+	
+	@Column
 	@SerializedName("created_at")
 	private String publishDate;
 	
-	private Image images;
-	
+	@Column
 	@SerializedName("views_count")
 	private Integer viewsCount;
 	
+	@Column
 	@SerializedName("likes_count")
 	private Integer likesCount;
 	
+	@Column
 	@SerializedName("buckets_count")
 	private Integer bucketsCount;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}

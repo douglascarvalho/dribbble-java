@@ -29,7 +29,7 @@ public class DribbbleJavaController {
 
 	@RequestMapping(value="/addToFavorites", method=RequestMethod.POST)
 	public String addToCart(@RequestBody Screenshot screenShot) {
-		return screenShot.getTitle();
+		return dribbbleJavaService.addToFavorites(screenShot);
 	}
 	
 }

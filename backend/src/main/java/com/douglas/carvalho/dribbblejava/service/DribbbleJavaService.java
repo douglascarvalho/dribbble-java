@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.douglas.carvalho.dribbblejava.api.APIDribbble;
 import com.douglas.carvalho.dribbblejava.domain.Screenshot;
+import com.douglas.carvalho.dribbblejava.repository.ScreenshotRepository;
 
 import retrofit2.Call;
 
@@ -16,6 +17,9 @@ public class DribbbleJavaService {
 
 	@Autowired
 	private APIDribbble apiDribbble;
+	
+	@Autowired
+	private ScreenshotRepository screenshotRepository;
 	
 	public List<Screenshot> getPopularShots() {
 		try {
@@ -30,5 +34,13 @@ public class DribbbleJavaService {
 		return null;
 	}
 	
-	
+	public String addToFavorites(Screenshot screenshot){
+		if (screenshotRepository.findOne(screenshot.getId()) == null){
+			screenshotRepository.save(screenshot);
+			return "Imagem salva com sucesso na sua galeria de imagens";
+		} else {
+			return "Imagem já está salva na sua galeria de favoritos";
+		}
+	}
+
 }
