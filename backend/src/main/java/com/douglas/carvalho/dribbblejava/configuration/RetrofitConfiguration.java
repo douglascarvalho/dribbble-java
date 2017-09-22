@@ -18,7 +18,7 @@ public class RetrofitConfiguration {
 		
 		return new Retrofit.Builder()
 				.addConverterFactory(GsonConverterFactory.create())
-				.baseUrl("https://api.dribbble.com/")
+				.baseUrl("https://api.dribbble.com/v1/")
 				.client(httpClient.build())
 				.build();
 	}

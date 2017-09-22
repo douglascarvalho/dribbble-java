@@ -15,6 +15,9 @@ import retrofit2.Call;
 @Service
 public class DribbbleJavaService {
 
+	private final Integer quantityScreenshotsPerPage = 18;
+	private final String accessToken = "3938be32608d6bf9619843f558904afb43c3701fcd39cf911687841b6fad14bc";
+	
 	@Autowired
 	private APIDribbble apiDribbble;
 	
@@ -23,7 +26,7 @@ public class DribbbleJavaService {
 	
 	public List<Screenshot> getPopularShots() {
 		try {
-			Call<List<Screenshot>> popular = apiDribbble.getPopular();
+			Call<List<Screenshot>> popular = apiDribbble.getPopular(1, quantityScreenshotsPerPage, accessToken);
 			List<Screenshot> body = popular.execute().body();
 			
 			return body;

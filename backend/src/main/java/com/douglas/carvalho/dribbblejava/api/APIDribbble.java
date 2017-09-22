@@ -6,10 +6,15 @@ import com.douglas.carvalho.dribbblejava.domain.Screenshot;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface APIDribbble {
     
-	@GET("https://api.dribbble.com/v1/shots?sort=views?page=1&access_token=3938be32608d6bf9619843f558904afb43c3701fcd39cf911687841b6fad14bc")
-    Call<List<Screenshot>> getPopular();
+	@GET("shots")
+    Call<List<Screenshot>> getPopular(
+    		@Query("page") Integer page, 
+    		@Query("per_page") Integer quantityPerPage, 
+    		@Query("access_token") String accessToken
+    		);
 
 }
