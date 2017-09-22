@@ -18,10 +18,6 @@ header {
 	}
 }
 
-.card-block {
-  height:250px
-}
-
 @media (min-width: 34em) {
     .card-columns {
         -webkit-column-count: 2;

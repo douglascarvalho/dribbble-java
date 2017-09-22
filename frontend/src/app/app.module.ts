@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   providers: [AppComponent],
   bootstrap: [AppComponent]

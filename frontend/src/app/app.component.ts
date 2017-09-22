@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response} from '@angular/http';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -12,7 +13,9 @@ export class AppComponent {
   private apiUrl = 'http://localhost:8080/dribbble/popular';
   data: any = {};
 
-  constructor(private http: Http) {
+  shotTitle: string;
+
+  constructor(private http: Http, private modalService: NgbModal) {
     console.log('Hello fellow user');
     this.getPopularScreenshots();
     this.getData();
@@ -29,5 +32,12 @@ export class AppComponent {
       this.data = data;
     })
   }
+
+  openModal(content, shot) {
+    const modalRef = this.modalService.open(content);
+    this.shotTitle = shot.title;
+
+  }
+
 
 }
