@@ -4,7 +4,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -14,10 +13,7 @@ import com.google.gson.annotations.SerializedName;
 
 @Entity
 @Table(name = "screenshot")
-public class Screenshot {
-	
-	@Id
-	private Long id;
+public class Screenshot extends PersistentEntityId{
 	
 	@Column
 	private String title;
@@ -45,14 +41,6 @@ public class Screenshot {
 	@Column
 	@SerializedName("buckets_count")
 	private Integer bucketsCount;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;

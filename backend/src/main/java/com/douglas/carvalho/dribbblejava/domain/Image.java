@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "image")
-public class Image {
+public class Image extends PersistentEntity{
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-
+	
 	@Column
 	private String teaser;
 	
@@ -23,6 +23,7 @@ public class Image {
 	
 	@Column
 	private String hidpi;
+	
 	
 	public Long getId() {
 		return id;
