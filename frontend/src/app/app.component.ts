@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works';
+  title = 'Dribbble Java';
   private apiUrl = 'http://localhost:8080/dribbble/popular';
   data: any = {};
 
