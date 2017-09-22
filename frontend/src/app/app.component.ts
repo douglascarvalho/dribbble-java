@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Http, Response} from '@angular/http';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -10,19 +10,17 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent {
   title = 'Dribbble Java';
-  private apiUrl = 'http://localhost:8080/dribbble/popular';
+  private apiUrl = 'http://localhost:8080/dribbble';
   data: any = {};
-
-  shotTitle: string;
+  screenshot: any;
 
   constructor(private http: Http, private modalService: NgbModal) {
     console.log('Hello fellow user');
     this.getPopularScreenshots();
-    this.getData();
   }
 
   getData() {
-    return this.http.get(this.apiUrl)
+    return this.http.get(`${this.apiUrl}/popular`)
       .map((res: Response) => res.json())
   }
 
@@ -33,11 +31,22 @@ export class AppComponent {
     })
   }
 
+  addToFavorite() {
+    let requestOptions = new RequestOptions();
+    requestOptions.headers = new Headers({"Content-Type":"application/json"});
+  
+    return this.http.post(`${this.apiUrl}/addToFavorites`, this.screenshot, requestOptions).subscribe(data => {
+      console.log(data['_body']);
+    });
+  }
+
+
+
   openModal(content, shot) {
     const modalRef = this.modalService.open(content);
-    this.shotTitle = shot.title;
-
+    this.screenshot = shot;
   }
+
 
 
 }
