@@ -5,7 +5,7 @@ import java.util.List;
 public class ResponseWrapper {
 	
 	private List<Screenshot> screenShots;
-
+	
 	public ResponseWrapper(List<Screenshot> screenShots) {
 		this.screenShots = screenShots;
 	}

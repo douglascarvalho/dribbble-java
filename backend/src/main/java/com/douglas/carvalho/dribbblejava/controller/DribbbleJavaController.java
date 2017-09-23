@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.douglas.carvalho.dribbblejava.domain.ResponseWrapper;
+import com.douglas.carvalho.dribbblejava.domain.Result;
 import com.douglas.carvalho.dribbblejava.domain.Screenshot;
 import com.douglas.carvalho.dribbblejava.service.DribbbleJavaService;
 
@@ -28,8 +29,9 @@ public class DribbbleJavaController {
 	}
 
 	@RequestMapping(value="/addToFavorites", method=RequestMethod.POST)
-	public String addToCart(@RequestBody Screenshot screenShot) {
-		return dribbbleJavaService.addToFavorites(screenShot);
+	public Result addToCart(@RequestBody Screenshot screenShot) {
+		Result result = dribbbleJavaService.addToFavorites(screenShot);
+		return result;
 	}
 	
 }
