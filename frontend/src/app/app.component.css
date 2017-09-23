@@ -1,8 +1,8 @@
 @import "../../node_modules/font-awesome/css/font-awesome.css";
 
 header {
-	background: #563d7c;
-	padding: 2em 1em;
+	background: #473F64;
+	margin: 0.1em ;
 	color: #fff;
 	margin-bottom: 2em;
 	h1 {
@@ -23,7 +23,6 @@ header {
 .card-footer {
     color: gray;
 }
-
   
 @media (min-width: 34em) {
     .card-columns {
