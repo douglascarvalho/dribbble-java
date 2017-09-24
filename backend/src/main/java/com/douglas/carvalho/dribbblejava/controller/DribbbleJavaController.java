@@ -24,14 +24,22 @@ public class DribbbleJavaController {
 	
 	@RequestMapping(value="/popular", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseWrapper getPopularShots(){
-		List<Screenshot> shots = dribbbleJavaService.getPopularShots();
+		List<Screenshot> shots = dribbbleJavaService.getPopularScreenshots();
 		return new ResponseWrapper(shots);
 	}
 
+	@RequestMapping(value="/favorites", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseWrapper getFavoritesShots(){
+		List<Screenshot> shots = dribbbleJavaService.getFavoritesScreenshots();
+		return new ResponseWrapper(shots);
+	}
+	
 	@RequestMapping(value="/addToFavorites", method=RequestMethod.POST)
 	public Result addToCart(@RequestBody Screenshot screenShot) {
 		Result result = dribbbleJavaService.addToFavorites(screenShot);
 		return result;
 	}
+	
+	
 	
 }

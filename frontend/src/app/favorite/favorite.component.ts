@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-favorite',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private http: Http) { 
+    this.getFavoritesScreenshots();
   }
+
+  private apiUrl = 'http://localhost:8080/dribbble';  
+  data: any = {};
+
+  getData() {
+    return this.http.get(`${this.apiUrl}/favorites`)
+      .map((res: Response) => res.json())
+  }
+
+  getFavoritesScreenshots(){
+    this.getData().subscribe(data => {
+      console.log(data);
+      this.data = data;
+    })
+  }
+
+  ngOnInit() {}
 
 }

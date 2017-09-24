@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
+import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/map';
@@ -13,7 +13,6 @@ import 'rxjs/add/operator/map';
 })
 export class NavigationComponent {
 
-  title = 'Dribbble Java';
   private apiUrl = 'http://localhost:8080/dribbble';
   data: any = {};
   screenshot: any;

@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { CardDeckComponent } from './card-deck/card-deck.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FavoriteComponent,
-    NavigationComponent
+    NavigationComponent,
+    CardDeckComponent
   ],
   imports: [
     BrowserModule,

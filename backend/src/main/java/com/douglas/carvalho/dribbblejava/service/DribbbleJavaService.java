@@ -26,7 +26,7 @@ public class DribbbleJavaService {
 	@Autowired
 	private ScreenshotRepository screenshotRepository;
 	
-	public List<Screenshot> getPopularShots() {
+	public List<Screenshot> getPopularScreenshots() {
 		try {
 			Call<List<Screenshot>> popular = apiDribbble.getPopular(1, quantityScreenshotsPerPage, accessToken);
 			List<Screenshot> body = popular.execute().body();
@@ -37,6 +37,10 @@ public class DribbbleJavaService {
 		}
 
 		return null;
+	}
+	
+	public List<Screenshot> getFavoritesScreenshots(){
+		return (List<Screenshot>) screenshotRepository.findAll();
 	}
 	
 	public Result addToFavorites(Screenshot screenshot){

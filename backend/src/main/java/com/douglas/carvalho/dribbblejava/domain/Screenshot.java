@@ -23,7 +23,7 @@ public class Screenshot extends PersistentEntityId{
 	@JoinColumn(name = "screenshot_author_id")
 	private Author author;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Image images;
 	
 	@Column
