@@ -2,15 +2,15 @@
   <div class="row">
     <div class="card-columns">
       <ng-container *ngFor="let shot of data.screenShots">
-          <div class="card">
-            <img class="card-img-top image-fluid" src="{{shot.images.teaser}}" alt="Card image cap" (click)="openModal(content, shot)">
-            <div class="card-footer">
-                <div class="row" style="vertical-align: inline" >    
-                    <div class="col-4"> <i class="fa fa-eye ">{{shot.viewsCount}}</i> </div>
-                    <div class="col-4"> <i class="fa fa-thumbs-up ">{{shot.likesCount}}</i> </div>
-                    <div class="col-4"> <i class="fa fa-bitbucket ">{{shot.bucketsCount}}</i> </div>
-                </div>
+        <div class="card">
+          <img class="card-img-top image-fluid" src="{{shot.images.teaser}}" alt="Card image cap" (click)="openModal(content, shot)">
+          <div class="card-footer">
+            <div class="row" style="vertical-align: inline">
+              <div class="col-4"> <i class="fa fa-eye ">{{shot.viewsCount}}</i> </div>
+              <div class="col-4"> <i class="fa fa-thumbs-up ">{{shot.likesCount}}</i> </div>
+              <div class="col-4"> <i class="fa fa-bitbucket ">{{shot.bucketsCount}}</i> </div>
             </div>
+          </div>
         </div>
       </ng-container>
     </div>
@@ -26,10 +26,20 @@
     </button>
   </div>
   <div class="modal-body">
-    <img src="{{screenshot.images.normal}}" alt="Card image cap"/>
-    <button (click)="favorite()">{{favoriteButtonDescription}}</button>
-    <p><p>Autor: {{ screenshot.author.name }}
-    <p>Data de publicação: {{ screenshot.publishDate | date: 'dd/MM/yyyy' }}
+    <div class="container-fluid">
+      <div class="row">
+        <img src="{{screenshot.images.normal}}" (click)="openHidpiImage()" alt="Card image cap" />
+      </div>
+      <div class="row">
+        <button class="{{favoriteButtonClasses}}" (click)="favorite()">{{favoriteButtonDescription}}</button>
+      </div>
+      <div class="row">
+        Autor: {{ screenshot.author.name }}
+      </div>
+      <div class="row">
+        Data de publicação: {{ screenshot.publishDate | date: 'dd/MM/yyyy' }}
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>

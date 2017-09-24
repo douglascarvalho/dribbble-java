@@ -26,13 +26,16 @@ export class CardDeckComponent implements OnInit {
   @Input("page")
   page: string;
 
+  favoriteButtonClasses: string;
   favoriteButtonDescription: string;
   screenshot: any;
   
   ngOnInit() {              
     if ( this.page === 'favorite' ) {
         this.favoriteButtonDescription = 'Remover dos favoritos';
+        this.favoriteButtonClasses = 'btn btn-danger'
     } else if (this.page === 'navigation' ) {
+        this.favoriteButtonClasses = 'btn btn-primary'
         this.favoriteButtonDescription = 'Adicionar aos favoritos';
     }    
   }
@@ -40,6 +43,10 @@ export class CardDeckComponent implements OnInit {
   openModal(content, shot) {
     const modalRef = this.modalService.open(content);
     this.screenshot = shot;
+  }
+
+  openHidpiImage() {
+    window.open(this.screenshot.images.hidpi);    
   }
 
   favorite() {
