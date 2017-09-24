@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-favorite',
@@ -14,11 +15,10 @@ export class FavoriteComponent implements OnInit {
     this.getFavoritesScreenshots();
   }
 
-  private apiUrl = 'http://localhost:8080/dribbble';  
   data: any = {};
 
   getData() {
-    return this.http.get(`${this.apiUrl}/favorites`)
+    return this.http.get(`${environment.apiUrl}/favorites`)
       .map((res: Response) => res.json())
   }
 

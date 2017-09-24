@@ -3,6 +3,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-card-deck',
   templateUrl: './card-deck.component.html',
@@ -17,8 +19,6 @@ export class CardDeckComponent implements OnInit {
                   
                 this.toastyConfig.theme = 'default';                
   }
-  
-  private apiUrl = 'http://localhost:8080/dribbble';  
   
   @Input("data")
   data: any = {};
@@ -35,8 +35,8 @@ export class CardDeckComponent implements OnInit {
   addToFavorite() {
     let requestOptions = new RequestOptions();
     requestOptions.headers = new Headers({"Content-Type":"application/json"});
-  
-    return this.http.post(`${this.apiUrl}/addToFavorites`, this.screenshot, requestOptions).subscribe(
+    
+    return this.http.post(`${environment.apiUrl}/addToFavorites`, this.screenshot, requestOptions).subscribe(
       data => {
         let response = data.json();
         console.log(response)

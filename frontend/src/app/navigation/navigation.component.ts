@@ -5,6 +5,7 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-navigation',
@@ -13,7 +14,6 @@ import 'rxjs/add/operator/map';
 })
 export class NavigationComponent {
 
-  private apiUrl = 'http://localhost:8080/dribbble';
   data: any = {};
   screenshot: any;
 
@@ -24,7 +24,7 @@ export class NavigationComponent {
   }
 
   getData() {
-    return this.http.get(`${this.apiUrl}/popular`)
+    return this.http.get(`${environment.apiUrl}/popular`)
       .map((res: Response) => res.json())
   }
 
@@ -33,42 +33,6 @@ export class NavigationComponent {
       console.log(data);
       this.data = data;
     })
-  }
-
-  addToFavorite() {
-    let requestOptions = new RequestOptions();
-    requestOptions.headers = new Headers({"Content-Type":"application/json"});
-  
-    return this.http.post(`${this.apiUrl}/addToFavorites`, this.screenshot, requestOptions).subscribe(
-      data => {
-        let response = data.json();
-        console.log(response)
-        if (response.resultStatus === "SUCCESS") {
-          this.showSuccess(response.message);
-        } else {
-          this.showWarn(response.message);          
-        }
-      },
-      err => {    
-        this.showError(err['_body']);
-      });
-  }
-
-  openModal(content, shot) {
-    const modalRef = this.modalService.open(content);
-    this.screenshot = shot;
-  }
-
-  showSuccess(msg) {
-    this.toastyService.success(msg);
-  }
-
-  showWarn(msg) {
-    this.toastyService.warning(msg);
-  }
-
-  showError(msg) {
-    this.toastyService.error(msg)
   }
 
 }
