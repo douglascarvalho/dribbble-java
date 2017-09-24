@@ -3,9 +3,7 @@
     <div class="card-columns">
       <ng-container *ngFor="let shot of data.screenShots">
           <div class="card">
-            <div class="card-block" >
-              <img class="card-img-top" src="{{shot.images.teaser}}" alt="Card image cap" (click)="openModal(content, shot)">
-            </div>
+            <img class="card-img-top image-fluid" src="{{shot.images.teaser}}" alt="Card image cap" (click)="openModal(content, shot)">
             <div class="card-footer">
                 <div class="row" style="vertical-align: inline" >    
                     <div class="col-4"> <i class="fa fa-eye ">{{shot.viewsCount}}</i> </div>

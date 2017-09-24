@@ -1,1 +1,10 @@
 <app-card-deck [data]="data" [page]='navigationPageName'></app-card-deck>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row content d-flex justify-content-center" id="sticky-sidebar">            
+            <button type="button" (click)="getPreviousPage()" class="btn btn-primary fa fa-chevron-circle-left" style="margin-right:0.2em" ></button>
+            <button type="button" (click)="getNextPage()" class="btn btn-primary fa fa-chevron-circle-right" style="margin-left:0.2em"></button>
+        </div>
+    </div>
+</footer>

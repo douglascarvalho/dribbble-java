@@ -27,8 +27,8 @@ public class DribbbleJavaController {
 	private DribbbleJavaService dribbbleJavaService;
 	
 	@RequestMapping(value="/popular", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseWrapper getPopularShots(){
-		List<Screenshot> shots = dribbbleJavaService.getPopularScreenshots();
+	public @ResponseBody ResponseWrapper getPopularShots(@RequestParam("page") Integer page){
+		List<Screenshot> shots = dribbbleJavaService.getPopularScreenshots(page);
 		return new ResponseWrapper(shots);
 	}
 

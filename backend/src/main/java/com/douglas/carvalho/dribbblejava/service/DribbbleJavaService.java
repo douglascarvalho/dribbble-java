@@ -30,9 +30,9 @@ public class DribbbleJavaService {
 	@Autowired
 	private ScreenshotRepository screenshotRepository;
 	
-	public List<Screenshot> getPopularScreenshots() {
+	public List<Screenshot> getPopularScreenshots(Integer page) {
 		try {
-			Call<List<Screenshot>> popular = apiDribbble.getPopular(1, SCREENSHOTS_PER_PAGE_QUANTITY, DRIBBBLE_ACCESS_TOKEN);
+			Call<List<Screenshot>> popular = apiDribbble.getPopular(page, SCREENSHOTS_PER_PAGE_QUANTITY, DRIBBBLE_ACCESS_TOKEN);
 			List<Screenshot> body = popular.execute().body();
 			
 			return body;
