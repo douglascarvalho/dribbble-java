@@ -52,4 +52,8 @@ public class DribbbleJavaService {
 		}
 	}
 
+	public void removeFromFavorites(Long productId) {
+		screenshotRepository.delete(productId);
+	}
+
 }

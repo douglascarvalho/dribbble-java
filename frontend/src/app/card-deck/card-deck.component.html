@@ -29,7 +29,7 @@
   </div>
   <div class="modal-body">
     <img src="{{screenshot.images.normal}}" alt="Card image cap"/>
-    <button (click)="addToFavorite()">Favoritar</button>
+    <button (click)="favorite()">{{favoriteButtonDescription}}</button>
     <p><p>Autor: {{ screenshot.author.name }}
     <p>Data de publicação: {{ screenshot.publishDate | date: 'dd/MM/yyyy' }}
   </div>

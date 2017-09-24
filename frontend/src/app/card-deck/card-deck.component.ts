@@ -17,19 +17,37 @@ export class CardDeckComponent implements OnInit {
               private toastyService:ToastyService,
               private toastyConfig: ToastyConfig) {
                   
-                this.toastyConfig.theme = 'default';                
+                this.toastyConfig.theme = 'default'; 
   }
   
   @Input("data")
   data: any = {};
+
+  @Input("page")
+  page: string;
+
+  favoriteButtonDescription: string;
   screenshot: any;
   
-  ngOnInit() {
+  ngOnInit() {              
+    if ( this.page === 'favorite' ) {
+        this.favoriteButtonDescription = 'Remover dos favoritos';
+    } else if (this.page === 'navigation' ) {
+        this.favoriteButtonDescription = 'Adicionar aos favoritos';
+    }    
   }
 
   openModal(content, shot) {
     const modalRef = this.modalService.open(content);
     this.screenshot = shot;
+  }
+
+  favorite() {
+    if ( this.page === 'favorite' ) {
+      this.removeFromFavorite();
+    } else if (this.page === 'navigation' ) {
+      this.addToFavorite();
+    }
   }
 
   addToFavorite() {
@@ -49,6 +67,13 @@ export class CardDeckComponent implements OnInit {
       err => {    
         this.showError(err['_body']);
       });
+  }
+
+  removeFromFavorite() {
+    const deleteUrl =`${environment.apiUrl}/removeFromFavorites/${this.screenshot.id}` 
+    this.http.delete(deleteUrl).subscribe();
+
+    window.location.reload();
   }
 
   showSuccess(msg) {

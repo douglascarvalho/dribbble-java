@@ -15,6 +15,7 @@ export class FavoriteComponent implements OnInit {
     this.getFavoritesScreenshots();
   }
 
+  favoritePageName: string = "favorite"
   data: any = {};
 
   getData() {

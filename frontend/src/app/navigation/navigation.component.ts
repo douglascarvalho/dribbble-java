@@ -16,7 +16,8 @@ export class NavigationComponent {
 
   data: any = {};
   screenshot: any;
-
+  navigationPageName: string = "navigation"
+  
   constructor(private http: Http, private modalService: NgbModal,
               private toastyService:ToastyService, private toastyConfig: ToastyConfig, public router: Router) {
     this.getPopularScreenshots();

@@ -3,7 +3,10 @@ package com.douglas.carvalho.dribbblejava.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,11 +38,15 @@ public class DribbbleJavaController {
 	}
 	
 	@RequestMapping(value="/addToFavorites", method=RequestMethod.POST)
-	public Result addToCart(@RequestBody Screenshot screenShot) {
+	public Result addToFavorites(@RequestBody Screenshot screenShot) {
 		Result result = dribbbleJavaService.addToFavorites(screenShot);
 		return result;
 	}
 	
-	
-	
+	@RequestMapping(value="/removeFromFavorites/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Object> removeFromFavorites(@PathVariable(value = "id") Long productId) {
+		dribbbleJavaService.removeFromFavorites(productId);
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
+
 }
