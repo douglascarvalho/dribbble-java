@@ -6,6 +6,8 @@ public class Result {
 
 	private ResultStatus resultStatus;
 	
+	public Result() {}
+	
 	public Result(String message, ResultStatus resultStatus) {
 		this.message = message;
 		this.resultStatus = resultStatus;
