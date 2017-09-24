@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,8 @@ public class DribbbleJavaController {
 	}
 
 	@RequestMapping(value="/favorites", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseWrapper getFavoritesShots(){
-		List<Screenshot> shots = dribbbleJavaService.getFavoritesScreenshots();
+	public @ResponseBody ResponseWrapper getFavoritesShots(@RequestParam("favoriteFilter") Integer favoriteFilter){
+		List<Screenshot> shots = dribbbleJavaService.getFavoritesScreenshots(favoriteFilter);
 		return new ResponseWrapper(shots);
 	}
 	

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+
+const FAVORITE_FILTER_INSERT_DATE: number = 1;
+const FAVORITE_FILTER_RECENTLY_ADDED: number = 2;
 
 @Component({
   selector: 'app-favorite',
@@ -12,22 +16,30 @@ import { environment } from '../../environments/environment';
 export class FavoriteComponent implements OnInit {
 
   constructor(private http: Http) { 
-    this.getFavoritesScreenshots();
+    this.getDataByInsertDate();
   }
 
   favoritePageName: string = "favorite"
   data: any = {};
 
-  getData() {
-    return this.http.get(`${environment.apiUrl}/favorites`)
+  getData(favoriteFilter) {
+    return this.http.get(`${environment.apiUrl}/favorites?favoriteFilter=${favoriteFilter}`)
       .map((res: Response) => res.json())
   }
 
-  getFavoritesScreenshots(){
-    this.getData().subscribe(data => {
+  getFavoritesScreenshots(favoriteFilter){
+    this.getData(favoriteFilter).subscribe(data => {
       console.log(data);
       this.data = data;
     })
+  }
+
+  getDataByInsertDate(){
+    this.getFavoritesScreenshots(FAVORITE_FILTER_INSERT_DATE);    
+  }
+
+  getDataRecentlyAdded(){
+    this.getFavoritesScreenshots(FAVORITE_FILTER_RECENTLY_ADDED);
   }
 
   ngOnInit() {}

@@ -1,2 +1,12 @@
 
-<app-card-deck [data]="data" [page]="favoritePageName"></app-card-deck>
+<div class="container">
+        <div class="col-xs-4">
+        <div class="row content d-flex justify-content-center favorite-filter" id="sticky-sidebar">
+            <a href="#" onClick="return false;" class="nav-link" (click)="getDataByInsertDate()" >Data de inclusão</a>
+            <a href="#" onClick="return false;" class="nav-link" (click)="getDataRecentlyAdded()" >Adicionado recentemente</a>
+        </div>
+        </div>
+        <div class="col-xs-8" id="main">
+            <app-card-deck [data]="data" [page]="favoritePageName"></app-card-deck>
+        </div>
+</div>
